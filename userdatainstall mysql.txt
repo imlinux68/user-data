@@ -1,0 +1,14 @@
+#!/bin/bash
+yum update -y
+amazon-linux-extras install epel -y 
+yum update -y
+yum install https://dev.mysql.com/get/mysql80-community-release-el7-5.noarch.rpm  -y
+yum install mysql-community-server  -y
+systemctl start mysqld.service
+systemctl enable mysqld.service
+#password=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
+#mysql_secure_installation
+#systemctl restart mysqld.service
+wget https://www.mysqltutorial.org/wp-content/uploads/2018/03/mysqlsampledatabase.zip
+unzip mysqlsampledatabase.zip
+rm mysqlsampledatabase.zip
